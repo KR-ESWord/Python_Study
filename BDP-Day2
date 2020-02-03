@@ -1,0 +1,23 @@
+# 1번 실습
+import pandas as pd
+
+nameList = []
+krList = []
+enList = []
+mtList =[]
+name = input('학생들의 이름 입력(,로 구분) : ').split(',')
+nameList = [i for i in name]
+d1 = pd.DataFrame(index = nameList)
+kr = input('학생들의 국어성적 입력(,로 구분) : ').split(',')
+krList = [int(i) for i in kr]
+en = input('학생들의 영어성적 입력(,로 구분) : ').split(',')
+enList = [int(i) for i in en]
+mt = input('학생들의 수학성적 입력(,로 구분) : ').split(',')
+mtList = [int(i) for i in mt]
+
+d1['국어'] = krList
+d1['영어'] = enList
+d1['수학'] = mtList
+d1['합계'] = d1.sum(axis=1)
+
+print(d1)
