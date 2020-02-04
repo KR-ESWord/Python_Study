@@ -1,12 +1,7 @@
 import pandas as pd
 
-nameList = []
-genList = []
-ageList =[]
-jobList =[]
-
 menu = ['성별', '나이', '직업']
-df = pd.DataFrame(index = nameList, columns = menu)
+df = pd.DataFrame(columns = menu)
 
 while True:
     c_name = input('고객의 이름 : ')
@@ -16,6 +11,7 @@ while True:
     c_age  = int(input('고객의 나이 : '))
     c_job = input('고객의 직업(학생/직장인/자영업/전문직/기타) : ')
     df.loc[c_name] = [c_gen, c_age, c_job]
+
 print('====================')
 print('고객명단 : ')
 print(df)
