@@ -1,4 +1,3 @@
-# 1번 실습
 import pandas as pd
 
 nameList = []
@@ -15,9 +14,15 @@ enList = [int(i) for i in en]
 mt = input('학생들의 수학성적 입력(,로 구분) : ').split(',')
 mtList = [int(i) for i in mt]
 
-d1['국어'] = krList
-d1['영어'] = enList
-d1['수학'] = mtList
+s_kr = pd.Series(krList, index=name)
+s_en = pd.Series(enList, index=name)
+s_mt = pd.Series(mtList, index=name)
+
+d1['국어'] = s_kr
+d1['영어'] = s_en
+d1['수학'] = s_mt
 d1['합계'] = d1.sum(axis=1)
 
 print(d1)
+search = input('검색할 학생 이름은? ')
+d1.loc[search]
