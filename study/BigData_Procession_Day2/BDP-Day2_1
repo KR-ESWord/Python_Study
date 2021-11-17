@@ -1,0 +1,24 @@
+import pandas as pd
+
+name = input('학생들의 이름 입력(,로 구분) : ').split(',')
+
+kr = input('학생들의 국어성적 입력(,로 구분) : ').split(',')
+kr = [int(i) for i in kr]
+en = input('학생들의 영어성적 입력(,로 구분) : ').split(',')
+en = [int(i) for i in en]
+mt = input('학생들의 수학성적 입력(,로 구분) : ').split(',')
+mt = [int(i) for i in mt]
+
+s_kr = pd.Series(kr, index=name)
+s_en = pd.Series(en, index=name)
+s_mt = pd.Series(mt, index=name)
+d1 = pd.DataFrame()
+
+d1['국어'] = s_kr
+d1['영어'] = s_en
+d1['수학'] = s_mt
+d1['합계'] = d1.sum(axis=1)
+
+print(d1)
+search = input('검색할 학생 이름은? ')
+d1.loc[search]

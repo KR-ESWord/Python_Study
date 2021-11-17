@@ -1,0 +1,34 @@
+import pandas as pd
+
+menu = ['성별', '나이', '직업']
+df = pd.DataFrame(columns = menu)
+
+while True:
+    c_name = input('고객의 이름 : ')
+    if c_name == '':
+        break
+    c_gen = input('고객의 성별(남/여) : ')
+    c_age  = int(input('고객의 나이 : '))
+    c_job = input('고객의 직업(학생/직장인/자영업/전문직/기타) : ')
+    df.loc[c_name] = [c_gen, c_age, c_job]
+
+print('====================')
+print('고객명단 : ')
+print(df)
+print('--------------------')
+
+print('나이가 60 이상인 여성 고객 명단 : ')
+cage1 = df.나이 >= 60
+cgen1 = df.성별 == '여'
+print(df[cage1&cgen1])
+print('--------------------')
+
+print('직업이 학생인 고객 명단')
+cjob1 = df.직업 == '학생'
+print(df[cjob1])
+print('--------------------')
+
+print('30, 40대 고객 명단 : ')
+cage2 = df.나이 >= 30
+cage3 = df.나이 < 50
+print(df[cage2&cage3])

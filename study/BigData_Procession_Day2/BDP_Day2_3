@@ -1,0 +1,38 @@
+import pandas as pd
+
+nameList = []
+krList = []
+enList = []
+mtList =[]
+name = input('학생들의 이름 입력(,로 구분) : ').split(',')
+nameList = [i for i in name]
+d1 = pd.DataFrame(index = nameList)
+kr = input('학생들의 국어성적 입력(,로 구분) : ').split(',')
+krList = [int(i) for i in kr]
+en = input('학생들의 영어성적 입력(,로 구분) : ').split(',')
+enList = [int(i) for i in en]
+mt = input('학생들의 수학성적 입력(,로 구분) : ').split(',')
+mtList = [int(i) for i in mt]
+
+d1['국어'] = krList
+d1['영어'] = enList
+d1['수학'] = mtList
+d1['합계'] = d1.sum(axis=1)
+
+print(d1)
+menu1 = int(input('정렬 기준 선택(1:국어, 2:영어, 3:수학 4:합계)'))
+menu2 = int(input('정렬 방법 선택(1:오름차순, 2:내림차순)'))
+asc = 0
+if menu2 == 1:
+    asc = True
+elif menu2 == 2:
+    asc = False
+
+if menu1 == 1:
+    print(d1.sort_values(by='국어', ascending = asc))
+elif menu1 == 2:
+    print(d1.sort_values(by='영어', ascending = asc))
+elif menu1 == 3:
+    print(d1.sort_values(by='수학', ascending = asc))
+elif menu1 == 4:
+    print(d1.sort_values(by='합계', ascending = asc))
